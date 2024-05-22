@@ -4,8 +4,8 @@ namespace AurimasVilys\OopAndSolid;
 
 class EngineAssembler implements AssemblerInterface
 {
-    public function assemble(OrderInquiry $orderInquiry): void
+    public function assemble(Vehicle $vehicle): void
     {
-        echo "Engine is assembled successfully for model " . $orderInquiry->getVehicle()->getModel() . "\n";
+        echo "Engine is assembled successfully for model " . $vehicle->getModel() . "\n";
     }
 }

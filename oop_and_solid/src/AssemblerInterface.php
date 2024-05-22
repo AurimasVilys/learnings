@@ -4,5 +4,5 @@ namespace AurimasVilys\OopAndSolid;
 
 interface AssemblerInterface
 {
-    public function assemble(OrderInquiry $orderInquiry): void;
+    public function assemble(Vehicle $vehicle): void;
 }

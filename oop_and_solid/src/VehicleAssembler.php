@@ -17,9 +17,9 @@ class VehicleAssembler implements AssemblerInterface
     }
 
 
-    public function assemble(OrderInquiry $orderInquiry): void
+    public function assemble(Vehicle $vehicle): void
     {
-        $this->bodyAssembler->assemble($orderInquiry);
-        $this->engineAssembler->assemble($orderInquiry);
+        $this->bodyAssembler->assemble($vehicle);
+        $this->engineAssembler->assemble($vehicle);
     }
 }

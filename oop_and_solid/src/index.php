@@ -13,7 +13,7 @@ $assembler = new AurimasVilys\OopAndSolid\VehicleAssembler(
     new \AurimasVilys\OopAndSolid\BodyAssembler(),
     new \AurimasVilys\OopAndSolid\EngineAssembler()
 );
-$assembler->assemble($orderInquiry);
+$assembler->assemble($orderInquiry->getVehicle());
 
 $vehicleDeliveryHandler = new AurimasVilys\OopAndSolid\VehicleDeliveryHandler();
 $vehicleDeliveryHandler->deliver($orderInquiry);
