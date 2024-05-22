@@ -1,0 +1,16 @@
+{
+  "name": "aurimas.vilys/oop_and_solid",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "AurimasVilys\\OopAndSolid\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Aurimas Vilys",
+      "email": "aurimas.vilys@hometogo.com"
+    }
+  ],
+  "require": {}
+}
