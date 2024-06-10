@@ -6,6 +6,8 @@ namespace AurimasVilys\OopAndSolid;
 
 class ElectricCar extends Car
 {
+    public const TYPE_NUM = 2;
+    public const PRINT_NAME = 'Electric car';
 
     public function __construct()
     {
@@ -23,5 +25,15 @@ class ElectricCar extends Car
         $car->setModel($model);
 
         return $car;
+    }
+
+    public function getBodyAssembleDetails(): string
+    {
+        return "Body is assembled successfully for model " . $this->getModel() . "\n";
+    }
+
+    public function getFuelFillingDetails(): string
+    {
+        return "Oh no! Electric vehicle shouldn't be fueled with gas!\n";
     }
 }

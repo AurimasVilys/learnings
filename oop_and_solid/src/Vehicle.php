@@ -13,4 +13,8 @@ interface Vehicle
     public function getFuelType(): string;
 
     public function getTruckBedVolume(): int;
+
+    public function getBodyAssembleDetails(): string;
+
+    public function getFuelFillingDetails(): string;
 }

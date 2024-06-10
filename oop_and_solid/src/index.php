@@ -2,18 +2,30 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-
-echo "Welcome to the vehicle order configurator!\n";
-
-$orderInputCollector = new AurimasVilys\OopAndSolid\OrderInquiryCollector();
-$orderInquiry = $orderInputCollector->collectOrder();
-
-
+$carProductionInformer = new AurimasVilys\OopAndSolid\CarProductionInformer();
+$orderInquiryFactory = new AurimasVilys\OopAndSolid\OrderInquiryFactory();
+$vehicleDeliveryHandler = new AurimasVilys\OopAndSolid\VehicleDeliveryHandler();
 $assembler = new AurimasVilys\OopAndSolid\VehicleAssembler(
     new \AurimasVilys\OopAndSolid\BodyAssembler(),
     new \AurimasVilys\OopAndSolid\EngineAssembler()
 );
+
+$carProductionInformer->welcomeMessage();
+$carProductionInformer->showCarOptions();
+
+$carType = rtrim(fgets(STDIN));
+
+$carProductionInformer->informCarType($carType);
+
+$vehicle = \AurimasVilys\OopAndSolid\VehicleFactory::createVehicle((int)($carType));
+
+if ($vehicle === null) {
+    throw new \LogicException('Invalid input');
+}
+
+$orderInquiry = $orderInquiryFactory->createOrderInquiry($vehicle);
+$carProductionInformer->informOrderDetails($orderInquiry, $vehicle);
+
 $assembler->assemble($orderInquiry->getVehicle());
 
-$vehicleDeliveryHandler = new AurimasVilys\OopAndSolid\VehicleDeliveryHandler();
 $vehicleDeliveryHandler->deliver($orderInquiry);

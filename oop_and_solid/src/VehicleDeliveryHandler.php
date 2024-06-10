@@ -14,11 +14,8 @@ class VehicleDeliveryHandler
         echo "Vehicle is unloaded from the truck\n";
 
         echo "Vehicle is on the way to gas station and\n";
-        if (!$orderInquiry->getVehicle() instanceof ElectricCar) {
-            echo "Vehicle is fueled with " . $orderInquiry->getVehicle()->getFuelType() . " \n";
-        } else {
-            echo "Oh no! Electric vehicle shouldn't be fueled with gas!\n";
-        }
+
+        echo $orderInquiry->getVehicle()->getFuelFillingDetails();
 
         echo "Vehicle is ready for the customer\n";
     }

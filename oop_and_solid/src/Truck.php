@@ -4,6 +4,9 @@ namespace AurimasVilys\OopAndSolid;
 
 class Truck implements Vehicle
 {
+    public const TYPE_NUM = 3;
+    public const PRINT_NAME = 'Truck';
+
     private string $model;
     private string $engine;
     private string $transmission;
@@ -94,5 +97,16 @@ class Truck implements Vehicle
         echo "Transmission: " . $this->getTransmission() . "\n";
         echo "Fuel type: " . $this->getFuelType() . "\n";
         echo "Truck bed volume: " . $this->getTruckBedVolume() . "\n";
+    }
+
+    public function getBodyAssembleDetails(): string
+    {
+        return "Body is assembled successfully for model " . $this->getModel() . "\n"
+            .  "Truck bed is assembled successfully for model " . $this->getModel() . "\n";
+    }
+
+    public function getFuelFillingDetails(): string
+    {
+        return "Vehicle is fueled with " . $this->getFuelType() . " \n";
     }
 }

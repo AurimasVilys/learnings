@@ -16,7 +16,6 @@ class VehicleAssembler implements AssemblerInterface
         $this->engineAssembler = $engineAssembler;
     }
 
-
     public function assemble(Vehicle $vehicle): void
     {
         $this->bodyAssembler->assemble($vehicle);
