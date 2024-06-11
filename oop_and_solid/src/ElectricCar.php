@@ -18,6 +18,7 @@ class ElectricCar extends Car
 
     public static function create(): Car
     {
+        echo "You chose Electric car\n";
         echo "Model:\n";
         $model = rtrim(fgets(STDIN));
 

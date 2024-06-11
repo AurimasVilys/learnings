@@ -19,17 +19,14 @@ class CarProductionInformer
     public function showCarOptions(): void
     {
         $this->showMessage('What would you like to order?');
-        $this->showMessage("Please code:\n - 1 for Car\n - 2 for Electric car\n - 3 for Truck\n");
-    }
 
-    public function informCarType(string $carType): void
-    {
-        $this->showMessage(match ($carType) {
-            '1' => "You chose Car\n",
-            '2' => "You chose Electric car\n",
-            '3' => "You chose Truck\n",
-            default => "We are not able to provide your selection\n",
-        });
+        $vehicles = VehicleFactory::$vehicles;
+        $message = "Please code:\n";
+        foreach ($vehicles as $type => $name) {
+            $message .= " - $type for $name\n";
+        }
+
+        $this->showMessage($message);
     }
 
     public function informOrderDetails(OrderInquiry $orderInquiry, Vehicle $vehicle): void
@@ -39,5 +36,10 @@ class CarProductionInformer
         $this->showMessage('Vehicle information:');
 
         $vehicle->output();
+    }
+
+    public function vehicleTypeNotAvailable(): void
+    {
+        $this->showMessage("We are not able to provide your selection\n");
     }
 }

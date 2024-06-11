@@ -4,7 +4,13 @@ namespace AurimasVilys\OopAndSolid;
 
 class VehicleFactory
 {
-    public static function createVehicle(int $type): ?Vehicle
+    public static $vehicles = [
+        Car::TYPE_NUM => Car::PRINT_NAME,
+        ElectricCar::TYPE_NUM => ElectricCar::PRINT_NAME,
+        Truck::TYPE_NUM => Truck::PRINT_NAME,
+    ];
+
+    public function createVehicle(int $type): ?Vehicle
     {
         return match ($type) {
             Car::TYPE_NUM => Car::create(),

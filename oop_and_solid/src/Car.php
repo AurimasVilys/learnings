@@ -61,6 +61,7 @@ class Car implements Vehicle
 
     public static function create(): Car
     {
+        echo "You chose Car\n";
         echo "Model:\n";
         $model = rtrim(fgets(STDIN));
 
