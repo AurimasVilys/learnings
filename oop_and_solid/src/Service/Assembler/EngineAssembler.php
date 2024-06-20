@@ -1,6 +1,8 @@
 <?php
 
-namespace AurimasVilys\OopAndSolid;
+namespace AurimasVilys\OopAndSolid\Service\Assembler;
+
+use AurimasVilys\OopAndSolid\Model\Vehicle;
 
 class EngineAssembler implements AssemblerInterface
 {

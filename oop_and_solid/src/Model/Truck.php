@@ -1,8 +1,8 @@
 <?php
 
-namespace AurimasVilys\OopAndSolid;
+namespace AurimasVilys\OopAndSolid\Model;
 
-class Truck implements Vehicle
+class Truck implements Vehicle, GasFuelled
 {
     public const TYPE_NUM = 3;
     public const PRINT_NAME = 'Truck';
@@ -63,34 +63,6 @@ class Truck implements Vehicle
         $this->truckBedVolume = $truckBedVolume;
     }
 
-    public static function create(): Truck
-    {
-        echo "You chose Truck\n";
-        echo "Model:\n";
-        $model = rtrim(fgets(STDIN));
-
-        echo "Engine:\n";
-        $engine = rtrim(fgets(STDIN));
-
-        echo "Transmission:\n";
-        $transmission = rtrim(fgets(STDIN));
-
-        echo "Fuel type:\n";
-        $fuelType = rtrim(fgets(STDIN));
-
-        echo "Truck bed volume:\n";
-        $truckBedVolume = (int)rtrim(fgets(STDIN));
-
-        $truck = new Truck();
-        $truck->setModel($model);
-        $truck->setEngine($engine);
-        $truck->setTransmission($transmission);
-        $truck->setFuelType($fuelType);
-        $truck->setTruckBedVolume($truckBedVolume);
-
-        return $truck;
-    }
-
     public function output(): void
     {
         echo "Model: " . $this->getModel() . "\n";
@@ -98,16 +70,5 @@ class Truck implements Vehicle
         echo "Transmission: " . $this->getTransmission() . "\n";
         echo "Fuel type: " . $this->getFuelType() . "\n";
         echo "Truck bed volume: " . $this->getTruckBedVolume() . "\n";
-    }
-
-    public function getBodyAssembleDetails(): string
-    {
-        return "Body is assembled successfully for model " . $this->getModel() . "\n"
-            .  "Truck bed is assembled successfully for model " . $this->getModel() . "\n";
-    }
-
-    public function getFuelFillingDetails(): string
-    {
-        return "Vehicle is fueled with " . $this->getFuelType() . " \n";
     }
 }

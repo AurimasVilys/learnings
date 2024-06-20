@@ -2,7 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AurimasVilys\OopAndSolid;
+namespace AurimasVilys\OopAndSolid\Service;
+
+use AurimasVilys\OopAndSolid\Model\Car;
+use AurimasVilys\OopAndSolid\Model\ElectricCar;
+use AurimasVilys\OopAndSolid\Model\OrderInquiry;
+use AurimasVilys\OopAndSolid\Model\Truck;
+use AurimasVilys\OopAndSolid\Model\Vehicle;
 
 class CarProductionInformer
 {
@@ -20,7 +26,11 @@ class CarProductionInformer
     {
         $this->showMessage('What would you like to order?');
 
-        $vehicles = VehicleFactory::$vehicles;
+        $vehicles = [
+            Car::TYPE_NUM => Car::PRINT_NAME,
+            ElectricCar::TYPE_NUM => ElectricCar::PRINT_NAME,
+            Truck::TYPE_NUM => Truck::PRINT_NAME,
+        ];
         $message = "Please code:\n";
         foreach ($vehicles as $type => $name) {
             $message .= " - $type for $name\n";

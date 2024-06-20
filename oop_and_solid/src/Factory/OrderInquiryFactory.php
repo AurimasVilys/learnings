@@ -1,6 +1,9 @@
 <?php
 
-namespace AurimasVilys\OopAndSolid;
+namespace AurimasVilys\OopAndSolid\Factory;
+
+use AurimasVilys\OopAndSolid\Model\OrderInquiry;
+use AurimasVilys\OopAndSolid\Model\Vehicle;
 
 class OrderInquiryFactory
 {
