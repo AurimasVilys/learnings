@@ -21,7 +21,7 @@ class VehicleFactoryProvider
     public static function getFactory(int $type): ?VehicleFactoryInterface
     {
         if (!array_key_exists($type, self::$factories)) {
-            throw new \LogicException('Invalid factory type provided');
+            return null;
         }
 
         $factoryClass = self::$factories[$type];
