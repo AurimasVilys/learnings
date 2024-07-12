@@ -34,5 +34,5 @@ I, as I car dealership owner, want to create a new system, please consider my re
 ### Assumptions
 1. Create currently only a sistem that supports configuring only configuring and creating cars
 2. Currently don't reflect about additional equiment logic (for example improved fire safery can be selected for all types of trucks)
-3. All created vehicles should be stored in a DB, ensure that only one connection can be opened to the DB
+3. All created vehicles should be stored in a file
 4. If there is any question to the client (from a business side) make an assumption and implement by assumption.
