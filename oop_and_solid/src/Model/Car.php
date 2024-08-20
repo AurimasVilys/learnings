@@ -1,14 +1,18 @@
 <?php
 
-namespace AurimasVilys\OopAndSolid;
+declare(strict_types=1);
 
-class Truck implements Vehicle
+namespace AurimasVilys\OopAndSolid\Model;
+
+class Car implements Vehicle, GasFuelled
 {
+    public const TYPE_NUM = 1;
+    public const PRINT_NAME = 'Car';
+
     private string $model;
     private string $engine;
     private string $transmission;
     private string $fuelType;
-    private int $truckBedVolume;
 
     public function getModel(): string
     {
@@ -52,39 +56,7 @@ class Truck implements Vehicle
 
     public function getTruckBedVolume(): int
     {
-        return $this->truckBedVolume;
-    }
-
-    public function setTruckBedVolume(int $truckBedVolume): void
-    {
-        $this->truckBedVolume = $truckBedVolume;
-    }
-
-    public static function create(): Truck
-    {
-        echo "Model:\n";
-        $model = rtrim(fgets(STDIN));
-
-        echo "Engine:\n";
-        $engine = rtrim(fgets(STDIN));
-
-        echo "Transmission:\n";
-        $transmission = rtrim(fgets(STDIN));
-
-        echo "Fuel type:\n";
-        $fuelType = rtrim(fgets(STDIN));
-
-        echo "Truck bed volume:\n";
-        $truckBedVolume = (int)rtrim(fgets(STDIN));
-
-        $truck = new Truck();
-        $truck->setModel($model);
-        $truck->setEngine($engine);
-        $truck->setTransmission($transmission);
-        $truck->setFuelType($fuelType);
-        $truck->setTruckBedVolume($truckBedVolume);
-
-        return $truck;
+        throw new \LogicException('Car does not have a truck bed volume');
     }
 
     public function output(): void
@@ -93,6 +65,5 @@ class Truck implements Vehicle
         echo "Engine: " . $this->getEngine() . "\n";
         echo "Transmission: " . $this->getTransmission() . "\n";
         echo "Fuel type: " . $this->getFuelType() . "\n";
-        echo "Truck bed volume: " . $this->getTruckBedVolume() . "\n";
     }
 }
