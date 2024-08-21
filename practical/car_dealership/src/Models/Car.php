@@ -2,7 +2,7 @@
 
 namespace AurimasVilys\CarDealership\Models;
 
-class Car implements VehicleInterface
+class Car implements Vehicle
 {
     private string $fuelType;
 
@@ -38,5 +38,10 @@ class Car implements VehicleInterface
     public function getExtras(): array
     {
         return $this->extras;
+    }
+
+    public function __clone()
+    {
+        // TODO: Implement __clone() method.
     }
 }

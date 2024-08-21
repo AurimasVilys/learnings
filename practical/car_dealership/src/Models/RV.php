@@ -2,7 +2,7 @@
 
 namespace AurimasVilys\CarDealership\Models;
 
-class RV implements VehicleInterface
+class RV implements Vehicle
 {
     private string $fuelType;
 
@@ -51,5 +51,10 @@ class RV implements VehicleInterface
     public function getSize(): string
     {
         return $this->size;
+    }
+
+    public function __clone()
+    {
+        // TODO: Implement __clone() method.
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AurimasVilys\CarDealership\Models;
 
-class Truck implements VehicleInterface
+class Truck implements Vehicle
 {
     private string $fuelType;
 
@@ -51,5 +51,10 @@ class Truck implements VehicleInterface
     public function getTruckType(): string
     {
         return $this->truckType;
+    }
+
+    public function __clone()
+    {
+        // TODO: Implement __clone() method.
     }
 }
