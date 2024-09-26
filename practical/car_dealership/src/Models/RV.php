@@ -4,6 +4,8 @@ namespace AurimasVilys\CarDealership\Models;
 
 class RV implements Vehicle
 {
+    public const NAME = 'RV';
+
     private string $fuelType;
 
     private string $color;
@@ -14,17 +16,28 @@ class RV implements Vehicle
 
     private string $size;
 
-    public function __construct(
-        string $fuelType,
-        string $color,
-        string $transmission,
-        array $extras,
-        string $size
-    ) {
+    public function setFuelType(string $fuelType): void
+    {
         $this->fuelType = $fuelType;
+    }
+
+    public function setColor(string $color): void
+    {
         $this->color = $color;
+    }
+
+    public function setTransmission(string $transmission): void
+    {
         $this->transmission = $transmission;
+    }
+
+    public function setExtras(array $extras): void
+    {
         $this->extras = $extras;
+    }
+
+    public function setSize(string $size): void
+    {
         $this->size = $size;
     }
 

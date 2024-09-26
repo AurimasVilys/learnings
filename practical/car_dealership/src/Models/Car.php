@@ -4,6 +4,8 @@ namespace AurimasVilys\CarDealership\Models;
 
 class Car implements Vehicle
 {
+    public const NAME = 'car';
+
     private string $fuelType;
 
     private string $color;
@@ -12,11 +14,23 @@ class Car implements Vehicle
 
     private array $extras;
 
-    public function __construct(string $fuelType, string $color, string $transmission, array $extras)
+    public function setFuelType(string $fuelType): void
     {
         $this->fuelType = $fuelType;
+    }
+
+    public function setColor(string $color): void
+    {
         $this->color = $color;
+    }
+
+    public function setTransmission(string $transmission): void
+    {
         $this->transmission = $transmission;
+    }
+
+    public function setExtras(array $extras): void
+    {
         $this->extras = $extras;
     }
 

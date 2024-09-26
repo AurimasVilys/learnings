@@ -1,18 +1,29 @@
 <?php
 
+namespace AurimasVilys\CarDealership\Builder;
+
 use AurimasVilys\CarDealership\Models\Vehicle;
 use AurimasVilys\CarDealership\Models\RV;
+use AurimasVilys\CarDealership\Service\TerminalService;
 
-class RvBuilder implements VehicleBuilderInterface
+class RvBuilder extends CarBuilder
 {
     public function build(): Vehicle
     {
-        $fuel = TerminalService::promptAndListen('fuel type');
-        $color = TerminalService::promptAndListen('color');
-        $transmission = TerminalService::promptAndListen('transmission');
-        $extras = TerminalService::promptAndListen('extras');
-        $size = TerminalService::promptAndListen('size');
+        $this->vehicle = new RV();
 
-        return new RV($fuel, $color, $transmission, explode(',', $extras), $size);
+        $this->setFuelType();
+        $this->setColor();
+        $this->setTransmission();
+        $this->setExtras();
+        $this->setSize();
+
+        return $this->vehicle;
+    }
+
+    private function setSize(): void
+    {
+        $size = TerminalService::getInstance()->promptAndListen('Insert size');
+        $this->vehicle->setSize($size);
     }
 }

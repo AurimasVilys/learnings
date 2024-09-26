@@ -1,18 +1,32 @@
 <?php
 
-use AurimasVilys\CarDealership\Models\CustomerInterface;
+namespace AurimasVilys\CarDealership;
+
+use AurimasVilys\CarDealership\Strategy\B2BDealershipStrategy;
+use AurimasVilys\CarDealership\Service\TerminalService;
+use AurimasVilys\CarDealership\Strategy\B2CDealershipStrategy;
 
 class Dealership
 {
-    private CustomerInterface $customer;
+    private const CUSTOMER_TYPES = [
+        'B2C',
+        'B2B'
+    ];
 
-    public function createCustomer(string $type): void
-    {
-        $this->vehicles[] = $vehicle;
-    }
+    private const DEALERSHIP_STRATEGIES = [
+        'B2C' => B2CDealershipStrategy::class,
+        'B2B' => B2BDealershipStrategy::class
+    ];
 
-    public function getVehicles(): array
+    public function serve(): void
     {
-        return $this->vehicles;
+        $terminalService = TerminalService::getInstance();
+
+        $customerType = $terminalService->promptAndListen('Customer type: ' . implode(', ', self::CUSTOMER_TYPES));
+        $strategyType = self::DEALERSHIP_STRATEGIES[$customerType];
+        $strategy = new $strategyType();
+        $result = $strategy->serve();
+
+        print_r($result);
     }
 }

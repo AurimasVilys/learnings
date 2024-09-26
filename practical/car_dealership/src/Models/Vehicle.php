@@ -2,7 +2,7 @@
 
 namespace AurimasVilys\CarDealership\Models;
 
-interface Vehicle extends \Prototype
+interface Vehicle extends Prototype
 {
     public function getFuelType(): string;
 

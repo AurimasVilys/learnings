@@ -1,18 +1,29 @@
 <?php
 
+namespace AurimasVilys\CarDealership\Builder;
+
 use AurimasVilys\CarDealership\Models\Vehicle;
 use AurimasVilys\CarDealership\Models\Truck;
+use AurimasVilys\CarDealership\Service\TerminalService;
 
-class TruckBuilder implements VehicleBuilderInterface
+class TruckBuilder extends CarBuilder
 {
     public function build(): Vehicle
     {
-        $fuel = TerminalService::promptAndListen('fuel type');
-        $color = TerminalService::promptAndListen('color');
-        $transmission = TerminalService::promptAndListen('transmission');
-        $extras = TerminalService::promptAndListen('extras');
-        $truckType = TerminalService::promptAndListen('truck type');
+        $this->vehicle = new Truck();
 
-        return new Truck($fuel, $color, $transmission, $truckType, explode(',', $extras));
+        $this->setFuelType();
+        $this->setColor();
+        $this->setTransmission();
+        $this->setExtras();
+        $this->setTruckType();
+
+        return $this->vehicle;
+    }
+
+    private function setTruckType(): void
+    {
+        $size = TerminalService::getInstance()->promptAndListen('Insert truck type');
+        $this->vehicle->setTruckType($size);
     }
 }
