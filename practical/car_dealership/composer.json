@@ -1,0 +1,16 @@
+{
+    "name": "d.rashevskyi/car_dealership",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "AurimasVilys\\CarDealership\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dmytro Rashevskyi",
+            "email": "dmytro.rashevskyi@hometogo.com"
+        }
+    ],
+    "require": {}
+}
