@@ -2,31 +2,22 @@
 
 namespace AurimasVilys\CarDealership;
 
-use AurimasVilys\CarDealership\Strategy\B2BDealershipStrategy;
-use AurimasVilys\CarDealership\Service\TerminalService;
-use AurimasVilys\CarDealership\Strategy\B2CDealershipStrategy;
+use AurimasVilys\CarDealership\Builder\HandlerChainBuilder;
+use AurimasVilys\CarDealership\Models\Order;
 
 class Dealership
 {
-    private const CUSTOMER_TYPES = [
-        'B2C',
-        'B2B'
-    ];
+    private HandlerChainBuilder $handlerChainBuilder;
 
-    private const DEALERSHIP_STRATEGIES = [
-        'B2C' => B2CDealershipStrategy::class,
-        'B2B' => B2BDealershipStrategy::class
-    ];
+    public function __construct(HandlerChainBuilder $handlerChainBuilder)
+    {
+        $this->handlerChainBuilder = $handlerChainBuilder;
+    }
 
     public function serve(): void
     {
-        $terminalService = TerminalService::getInstance();
-
-        $customerType = $terminalService->promptAndListen('Customer type: ' . implode(', ', self::CUSTOMER_TYPES));
-        $strategyType = self::DEALERSHIP_STRATEGIES[$customerType];
-        $strategy = new $strategyType();
-        $result = $strategy->serve();
-
-        print_r($result);
+        $order = new Order();
+        $orderHandler = $this->handlerChainBuilder->build();
+        $orderHandler->handle($order);
     }
 }

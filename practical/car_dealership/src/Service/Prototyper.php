@@ -1,5 +1,7 @@
 <?php
 
+namespace AurimasVilys\CarDealership\Service;
+
 use \AurimasVilys\CarDealership\Models\Vehicle;
 
 class Prototyper
